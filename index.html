@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ziadul Hasan — @alveejack1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #BD1C2A;
+      --red-dark: #8A1420;
+      --red-deep: #6B0F18;
+      --gold: #DF9E21;
+      --gold-light: #F0C040;
+      --cream: #EFEDE2;
+      --cream-dim: #C8C3B4;
+      --dark: #1A0A0C;
+      --text: #EFEDE2;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    ::selection { background: var(--gold); color: var(--dark); }
+
+    body {
+      background: var(--red);
+      color: var(--text);
+      font-family: 'Lato', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* TEXTURE */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.04;
+      background-image:
+        radial-gradient(circle at 20% 30%, var(--cream) 1px, transparent 1px),
+        radial-gradient(circle at 80% 70%, var(--cream) 1px, transparent 1px),
+        radial-gradient(circle at 50% 50%, var(--gold) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 10% 80%, var(--cream) 1px, transparent 1px),
+        radial-gradient(circle at 90% 20%, var(--cream) 1px, transparent 1px);
+      background-size: 200px 200px, 180px 180px, 120px 120px, 160px 160px, 220px 220px;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.08) 10px, rgba(0,0,0,0.08) 11px),
+        repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0,0,0,0.08) 10px, rgba(0,0,0,0.08) 11px);
+    }
+
+    section { position: relative; z-index: 1; }
+
+    /* ═══════ NAV ═══════ */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--red-dark);
+      border-bottom: 3px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 54px;
+    }
+    .nav-logo {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 900;
+      font-size: 1.05rem;
+      color: var(--cream);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .nav-logo b { color: var(--gold); }
+    .nav-menu { display: flex; height: 54px; }
+    .nav-menu a {
+      display: flex;
+      align-items: center;
+      padding: 0 1.4rem;
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s;
+    }
+    .nav-menu a:hover { color: var(--gold); }
+    .nav-menu a.on { color: var(--gold); }
+    .nav-menu a.on::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 1.4rem;
+      right: 1.4rem;
+      height: 3px;
+      background: var(--gold);
+    }
+    .nav-search {
+      width: 34px; height: 34px;
+      border: 2px solid var(--gold);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--gold);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .nav-search:hover { background: var(--gold); color: var(--red-dark); }
+    .nav-search svg { width: 15px; height: 15px; }
+
+    /* ═══════ SECTION 1 : THE CAPTAIN ═══════ */
+    .captain {
+      padding: 3.5rem 2.5rem 5rem;
+      display: grid;
+      grid-template-columns: 300px 1fr 260px;
+      gap: 3rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      min-height: calc(100vh - 54px);
+      align-items: center;
+    }
+
+    /* — mascot card — */
+    .mascot {
+      background: linear-gradient(150deg, var(--red-dark), var(--red-deep));
+      border: 2px solid var(--gold);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .mascot:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0,0,0,0.45); }
+    .mascot-visual {
+      height: 340px;
+      background: linear-gradient(180deg, #2a1015 0%, var(--red-dark) 100%);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .mascot-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 60%, rgba(223,158,33,0.12), transparent 60%);
+    }
+    .mascot-visual svg { position: relative; z-index: 1; width: 180px; height: 260px; }
+    .mascot-badge {
+      position: absolute;
+      top: 0.8rem; left: 0.8rem;
+      background: var(--gold);
+      color: var(--dark);
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 900;
+      font-size: 0.5rem;
+      letter-spacing: 0.18em;
+      padding: 0.25rem 0.6rem;
+      text-transform: uppercase;
+    }
+    .mascot-plate {
+      padding: 1rem 1.2rem;
+      text-align: center;
+      border-top: 2px solid var(--gold);
+      background: rgba(0,0,0,0.25);
+    }
+    .mascot-plate h3 {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+    .mascot-plate p { font-size: 0.72rem; color: var(--cream-dim); margin-top: 0.2rem; }
+
+    /* — hero text — */
+    .hero-txt .tag {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 700;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .hero-txt .tag::before { content: ''; width: 36px; height: 2px; background: var(--gold); }
+    .hero-txt h1 {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.4rem;
+    }
+    .hero-txt h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .hero-txt .desc {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: var(--cream-dim);
+      max-width: 500px;
+      margin-bottom: 1.8rem;
+    }
+    .hero-txt .desc strong { color: var(--cream); font-weight: 700; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .hero-tags span {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 700;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      cursor: default;
+      transition: all 0.3s;
+    }
+    .hero-tags span:hover { background: var(--gold); color: var(--dark); }
+
+    /* — stat boxes — */
+    .stats { display: flex; flex-direction: column; gap: 0.9rem; }
+    .stat-box {
+      background: linear-gradient(140deg, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+      border: 1.5px solid var(--gold);
+      border-radius: 10px;
+      padding: 1.1rem 1.2rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s;
+    }
+    .stat-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--gold);
+    }
+    .stat-box:hover { transform: translateX(-4px); box-shadow: 4px 4px 0 var(--gold); }
+    .stat-box .sl {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 700;
+      font-size: 0.52rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .stat-box .sv {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 900;
+      font-size: 0.85rem;
+      color: var(--cream);
+      line-height: 1.4;
+    }
+    .stat-box .ss {
+      font-size: 0.68rem;
+      color: var(--cream-dim);
+      margin-top: 0.35rem;
+      line-height: 1.4;
+    }
+
+    /* ═══════ SECTION 2 : THE BOUNTIES ═══════ */
+    .bounties { background: var(--dark); border-top: 3px solid var(--gold); }
+
+    .bounty-row {
+      padding: 2rem 2.5rem 0;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .bounty-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    .bounty-label {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 900;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .arrows { display: flex; gap: 0.45rem; }
+    .arr {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      border: 1.5px solid var(--red);
+      background: var(--red);
+      color: var(--cream);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 0.75rem;
+      transition: all 0.3s;
+    }
+    .arr:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+
+    .track {
+      display: flex;
+      gap: 1.1rem;
+      overflow-x: auto;
+      padding-bottom: 1.2rem;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+    .track::-webkit-scrollbar { display: none; }
+
+    /* — wanted poster — */
+    .wanted {
+      min-width: 195px;
+      background: linear-gradient(180deg, #2a1a10, #1a0e08);
+      border: 2px solid var(--gold);
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      transition: all 0.4s;
+      cursor: pointer;
+    }
+    .wanted:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 12px 28px rgba(223,158,33,0.2); }
+    .w-top { background: var(--gold); padding: 0.35rem 0.7rem; text-align: center; }
+    .w-top span {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 900; font-size: 0.55rem;
+      letter-spacing: 0.2em; color: var(--dark); text-transform: uppercase;
+    }
+    .w-img {
+      height: 130px;
+      background: linear-gradient(135deg, var(--red-dark), var(--red-deep));
+      display: grid; place-items: center;
+      position: relative;
+    }
+    .w-img .ico { font-size: 2.8rem; opacity: 0.7; }
+    .w-img::after {
+      content: 'WANTED';
+      position: absolute; bottom: 0.4rem;
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 900; font-size: 0.48rem;
+      letter-spacing: 0.3em; color: var(--gold); opacity: 0.45;
+    }
+    .w-body { padding: 0.7rem 0.8rem; }
+    .w-body h4 {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 700; font-size: 0.78rem; color: var(--cream); margin-bottom: 0.25rem;
+    }
+    .w-body p { font-size: 0.68rem; color: var(--cream-dim); line-height: 1.4; }
+    .w-bounty {
+      padding: 0.5rem 0.8rem;
+      border-top: 1px solid rgba(223,158,33,0.2);
+      text-align: center;
+    }
+    .w-bounty span {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 900; font-size: 0.6rem; color: var(--gold);
+    }
+
+    /* — marine card — */
+    .marine {
+      min-width: 210px;
+      background: linear-gradient(145deg, #0f1a2a, #0a1220);
+      border: 1.5px solid rgba(223,158,33,0.25);
+      border-radius: 10px;
+      padding: 1.3rem;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    .marine::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 50px; height: 50px;
+      background: var(--gold); opacity: 0.05;
+      border-bottom-left-radius: 100%;
+    }
+    .marine:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(223,158,33,0.12); }
+    .marine .mi { font-size: 1.6rem; margin-bottom: 0.7rem; }
+    .marine h4 {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 700; font-size: 0.82rem; color: var(--cream); margin-bottom: 0.3rem;
+    }
+    .marine p { font-size: 0.7rem; color: var(--cream-dim); line-height: 1.5; }
+    .marine .mt {
+      margin-top: 0.7rem;
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 700; font-size: 0.52rem;
+      letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase;
+    }
+
+    /* — alliance card — */
+    .alliance {
+      min-width: 170px;
+      background: linear-gradient(145deg, var(--red-dark), var(--red));
+      border: 1.5px solid rgba(223,158,33,0.25);
+      border-radius: 12px;
+      padding: 1.4rem;
+      text-align: center;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: all 0.4s;
+    }
+    .alliance:hover { border-color: var(--gold); transform: translateY(-4px) scale(1.03); }
+    .alliance .al {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin: 0 auto 0.8rem;
+      display: grid; place-items: center;
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 900; font-size: 1.1rem; color: var(--dark);
+    }
+    .alliance h4 {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 700; font-size: 0.78rem; color: var(--cream); margin-bottom: 0.2rem;
+    }
+    .alliance p { font-size: 0.65rem; color: var(--cream-dim); }
+
+    /* ═══════ SECTION 3 : THE ALCHEMY ═══════ */
+    .alchemy { background: var(--red); padding: 4rem 2.5rem; border-top: 3px solid var(--gold); }
+    .alchemy-hdr { text-align: center; margin-bottom: 2.5rem; position: relative; }
+    .alchemy-hdr .dl, .alchemy-hdr .dr {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      font-size: 2.2rem; opacity: 0.55;
+    }
+    .alchemy-hdr .dl { left: 18%; }
+    .alchemy-hdr .dr { right: 18%; }
+    .alchemy-hdr .tag {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 700; font-size: 0.62rem;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.8rem;
+    }
+    .alchemy-hdr h2 {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 900; font-size: clamp(1.8rem, 4vw, 3.2rem);
+      letter-spacing: -0.02em;
+    }
+
+    /* — roadmap — */
+    .roadmap { display: flex; justify-content: center; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .rm-btn {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 700; font-size: 0.68rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.9rem 1.8rem;
+      background: var(--red-dark);
+      color: var(--cream-dim);
+      border: 2px solid var(--gold);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .rm-btn:first-child { border-radius: 8px 0 0 8px; }
+    .rm-btn:last-child { border-radius: 0 8px 8px 0; }
+    .rm-btn:not(:last-child) { border-right: none; }
+    .rm-btn:hover, .rm-btn.on { background: var(--gold); color: var(--dark); }
+
+    /* — devil fruit carousel — */
+    .df-carousel {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.1rem;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .df-card {
+      width: 170px;
+      min-height: 230px;
+      background: linear-gradient(145deg, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+      border: 1.5px solid rgba(223,158,33,0.2);
+      border-radius: 12px;
+      padding: 1.4rem 0.9rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+    .df-card:hover { border-color: var(--gold); }
+    .df-card .fi { font-size: 2.2rem; margin-bottom: 0.7rem; }
+    .df-card .fn {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 900; font-size: 0.52rem;
+      letter-spacing: 0.2em; color: var(--gold); margin-bottom: 0.4rem;
+    }
+    .df-card h4 {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 700; font-size: 0.72rem; color: var(--cream); margin-bottom: 0.3rem;
+    }
+    .df-card p { font-size: 0.62rem; color: var(--cream-dim); line-height: 1.4; }
+    .df-card.sm { transform: scale(0.85); opacity: 0.55; filter: grayscale(30%); }
+    .df-card.sm:hover { opacity: 0.8; filter: grayscale(0); }
+    .df-card.md {
+      width: 210px; min-height: 290px;
+      border-color: var(--gold);
+      background: linear-gradient(145deg, var(--red-dark), rgba(0,0,0,0.4));
+      box-shadow: 0 0 35px rgba(223,158,33,0.12);
+    }
+
+    /* ═══════ FOOTER ═══════ */
+    .foot {
+      background: var(--dark);
+      border-top: 3px solid var(--gold);
+      padding: 1.8rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .foot span {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 700; font-size: 0.62rem;
+      letter-spacing: 0.1em; color: var(--cream-dim); text-transform: uppercase;
+    }
+    .foot-links { display: flex; gap: 1.3rem; }
+    .foot-links a {
+      font-family: 'Century Gothic', 'Futura', sans-serif;
+      font-weight: 700; font-size: 0.62rem;
+      letter-spacing: 0.1em; color: var(--cream-dim);
+      text-decoration: none; text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .foot-links a:hover { color: var(--gold); }
+
+    /* ═══════ REVEAL ═══════ */
+    .rv { opacity: 0; transform: translateY(28px); transition: all 0.8s cubic-bezier(0.16,1,0.3,1); }
+    .rv.vis { opacity: 1; transform: translateY(0); }
+    .rv-d1 { transition-delay: 0.1s; }
+    .rv-d2 { transition-delay: 0.2s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ═══════ RESPONSIVE ═══════ */
+    @media (max-width: 960px) {
+      .captain { grid-template-columns: 1fr; gap: 2rem; padding: 2rem 1.5rem; }
+      .mascot { max-width: 280px; margin: 0 auto; }
+      .stats { flex-direction: row; flex-wrap: wrap; }
+      .stat-box { flex: 1; min-width: 140px; }
+      .nav-menu { display: none; }
+      .alchemy-hdr .dl, .alchemy-hdr .dr { display: none; }
+      .df-card.sm { display: none; }
+      .df-card { width: 100% !important; min-height: auto; }
+      .df-card.md { min-height: auto; }
+      .foot { flex-direction: column; gap: 0.8rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════ SECTION 1 : THE CAPTAIN ══════ -->
+<nav class="nav">
+  <a href="#" class="nav-logo">Ziadul<b>.xyz</b></a>
+  <div class="nav-menu">
+    <a href="#captain" class="on">Home</a>
+    <a href="#bounties">Portfolio</a>
+    <a href="#bounties">Services</a>
+    <a href="#alchemy">Projects</a>
+  </div>
+  <button class="nav-search" aria-label="Search">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke-width="2"/><path stroke-width="2" d="M21 21l-4.35-4.35"/></svg>
+  </button>
+</nav>
+
+<section id="captain" class="captain">
+
+  <!-- MASCOT -->
+  <div class="mascot rv">
+    <div class="mascot-visual">
+      <div class="mascot-badge">CAPTAIN</div>
+      <svg viewBox="0 0 180 260" fill="none">
+        <defs>
+          <linearGradient id="h" x1="90" y1="0" x2="90" y2="260"><stop offset="0%" stop-color="#C0C0C0"/><stop offset="100%" stop-color="#808090"/></linearGradient>
+          <linearGradient id="e" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9B59B6"/><stop offset="100%" stop-color="#6C3483"/></linearGradient>
+        </defs>
+        <path d="M55 55 Q45 75 40 130 Q38 170 45 230 Q48 250 65 258 L115 258 Q132 250 135 230 Q142 170 140 130 Q135 75 125 55" fill="url(#h)" opacity="0.9"/>
+        <ellipse cx="90" cy="50" rx="32" ry="36" fill="#F5DEB3"/>
+        <path d="M60 40 Q73 28 90 26 Q107 28 120 40 Q115 32 108 30 Q100 35 90 33 Q80 35 72 30 Q65 32 60 40Z" fill="url(#h)"/>
+        <path d="M60 40 Q50 55 46 90 Q44 115 48 155" stroke="url(#h)" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <path d="M120 40 Q130 55 134 90 Q136 115 132 155" stroke="url(#h)" stroke-width="11" fill="none" stroke-linecap="round"/>
+        <ellipse cx="77" cy="50" rx="6" ry="7" fill="url(#e)"/>
+        <ellipse cx="103" cy="50" rx="6" ry="7" fill="url(#e)"/>
+        <circle cx="77" cy="48" r="2" fill="white"/>
+        <circle cx="103" cy="48" r="2" fill="white"/>
+        <path d="M84 62 Q90 65 96 62" stroke="#CC8866" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M68 82 Q90 92 112 82" stroke="var(--gold)" stroke-width="1.2" fill="none"/>
+        <path d="M67 85 Q63 105 61 130 Q58 160 62 190 L118 190 Q122 160 119 130 Q117 105 113 85" fill="#1a0a0c" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="mascot-plate">
+      <h3>ZIADUL</h3>
+      <p>The Captain · Web3 Navigator</p>
+    </div>
+  </div>
+
+  <!-- HERO TEXT -->
+  <div class="hero-txt rv rv-d1">
+    <div class="tag">// The Captain</div>
+    <h1><em>Ziadul</em> Hasan —<br>Sailing the<br>Web3 Seas</h1>
+    <p class="desc">
+      <strong>Web3 Community Manager & Ambassador</strong> navigating the decentralized frontier.
+      From DeFi protocols to RWA ecosystems — I build bridges between projects and the communities that power them.
+      Personal brand, growth marketing, and honest insights. No fluff, no financial advice.
+    </p>
+    <div class="hero-tags">
+      <span>Community Manager</span>
+      <span>Ambassador</span>
+      <span>DeFi / RWA</span>
+      <span>Growth</span>
+      <span>Marketing</span>
+      <span>Trading</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats rv rv-d2">
+    <div class="stat-box">
+      <div class="sl">Role</div>
+      <div class="sv">Community Manager / Ambassador</div>
+      <div class="ss">Building & growing Web3 ecosystems</div>
+    </div>
+    <div class="stat-box">
+      <div class="sl">Followers</div>
+      <div class="sv">26.1K — @alveejack1</div>
+      <div class="ss">197K+ posts · 1.3M top post views</div>
+    </div>
+    <div class="stat-box">
+      <div class="sl">Campaigns</div>
+      <div class="sv">Rayls Labs · Bybit · Nexarium</div>
+      <div class="ss">15-day streaks, anniversaries, DeFi launches</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════ SECTION 2 : THE BOUNTIES ══════ -->
+<section id="bounties" class="bounties">
+<nav class="nav">
+  <a href="#" class="nav-logo">Ziadul<b>.xyz</b></a>
+  <div class="nav-menu">
+    <a href="#captain">Home</a>
+    <a href="#bounties" class="on">Portfolio</a>
+    <a href="#bounties">Services</a>
+    <a href="#alchemy">Projects</a>
+  </div>
+  <button class="nav-search" aria-label="Search">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke-width="2"/><path stroke-width="2" d="M21 21l-4.35-4.35"/></svg>
+  </button>
+</nav>
+
+<!-- ROW 1 : WEB3 CAMPAIGNS -->
+<div class="bounty-row">
+  <div class="bounty-head">
+    <span class="bounty-label">Web3 Campaigns</span>
+    <div class="arrows">
+      <button class="arr" onclick="slide('t1',-1)">←</button>
+      <button class="arr" onclick="slide('t1',1)">→</button>
+    </div>
+  </div>
+  <div class="track" id="t1">
+    <div class="wanted">
+      <div class="w-top"><span>Most Wanted</span></div>
+      <div class="w-img"><span class="ico">⛓️</span></div>
+      <div class="w-body">
+        <h4>Rayls Labs 15-Day</h4>
+        <p>Consistent onchain engagement streak — community loyalty campaign</p>
+      </div>
+      <div class="w-bounty"><span>BELÍ: 15 DAYS</span></div>
+    </div>
+    <div class="wanted">
+      <div class="w-top"><span>Most Wanted</span></div>
+      <div class="w-img"><span class="ico">🎉</span></div>
+      <div class="w-body">
+        <h4>Bybit 7th Anniversary</h4>
+        <p>Major exchange milestone — multi-tier reward campaign</p>
+      </div>
+      <div class="w-bounty"><span>BELÍ: EXCHANGE</span></div>
+    </div>
+    <div class="wanted">
+      <div class="w-top"><span>Most Wanted</span></div>
+      <div class="w-img"><span class="ico">🎮</span></div>
+      <div class="w-body">
+        <h4>Crack Wallet Game</h4>
+        <p>WOL.FUN — Gamified wallet interaction & community event</p>
+      </div>
+      <div class="w-bounty"><span>BELÍ: GAMING</span></div>
+    </div>
+    <div class="wanted">
+      <div class="w-top"><span>Most Wanted</span></div>
+      <div class="w-img"><span class="ico">🔮</span></div>
+      <div class="w-body">
+        <h4>Nexarium DeFi Launch</h4>
+        <p>Foundation bootstrapping — tokenomics, governance, community</p>
+      </div>
+      <div class="w-bounty"><span>BELÍ: DEFI</span></div>
+    </div>
+    <div class="wanted">
+      <div class="w-top"><span>Most Wanted</span></div>
+      <div class="w-img"><span class="ico">🛡️</span></div>
+      <div class="w-body">
+        <h4>Warden Protocol $WARD</h4>
+        <p>$900K reward pool — mindshare leaderboard via Wallchain</p>
+      </div>
+      <div class="w-bounty"><span>BELÍ: SECURITY</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ROW 2 : DEFI & INFRA -->
+<div class="bounty-row">
+  <div class="bounty-head">
+    <span class="bounty-label">DeFi & Decentralized Infra</span>
+    <div class="arrows">
+      <button class="arr" onclick="slide('t2',-1)">←</button>
+      <button class="arr" onclick="slide('t2',1)">→</button>
+    </div>
+  </div>
+  <div class="track" id="t2">
+    <div class="marine">
+      <div class="mi">☁️</div>
+      <h4>Alibaba Cloud VPS</h4>
+      <p>Server setup, optimization & deployment for Web3 tooling</p>
+      <div class="mt">Infrastructure</div>
+    </div>
+    <div class="marine">
+      <div class="mi">🐳</div>
+      <h4>Docker Containers</h4>
+      <p>Containerized deployment for bots, APIs & backend services</p>
+      <div class="mt">DevOps</div>
+    </div>
+    <div class="marine">
+      <div class="mi">🤖</div>
+      <h4>OpenClaw & EnowxAI</h4>
+      <p>Custom AI-powered community bots and automation tools</p>
+      <div class="mt">Bots / AI</div>
+    </div>
+    <div class="marine">
+      <div class="mi">🏗️</div>
+      <h4>Nexarium DeFi</h4>
+      <p>Foundation setup — tokenomics, governance & launch strategy</p>
+      <div class="mt">DeFi Protocol</div>
+    </div>
+    <div class="marine">
+      <div class="mi">🔗</div>
+      <h4>Syndicate $SYND</h4>
+      <p>Onchain governance, Smart Sequencer & horizontal scaling</p>
+      <div class="mt">Layer 2 / Coordination</div>
+    </div>
+    <div class="marine">
+      <div class="mi">🔐</div>
+      <h4>Zama $ZAMA</h4>
+      <p>Confidential Blockchain — encrypted data, burned fees</p>
+      <div class="mt">Privacy Chain</div>
+    </div>
+  </div>
+</div>
+
+<!-- ROW 3 : COMMUNITIES -->
+<div class="bounty-row">
+  <div class="bounty-head">
+    <span class="bounty-label">Communities & Alliances</span>
+    <div class="arrows">
+      <button class="arr" onclick="slide('t3',-1)">←</button>
+      <button class="arr" onclick="slide('t3',1)">→</button>
+    </div>
+  </div>
+  <div class="track" id="t3">
+    <div class="alliance">
+      <div class="al">EO</div>
+      <h4>Engage Orbit</h4>
+      <p>Keluarga Besar</p>
+    </div>
+    <div class="alliance">
+      <div class="al">NW</div>
+      <h4>Nuwa World</h4>
+      <p>Core Team</p>
+    </div>
+    <div class="alliance">
+      <div class="al">BG</div>
+      <h4>Bingold.to</h4>
+      <p>Community Lead</p>
+    </div>
+    <div class="alliance">
+      <div class="al">SY</div>
+      <h4>Syndicate</h4>
+      <p>$SYND Ecosystem</p>
+    </div>
+    <div class="alliance">
+      <div class="al">WD</div>
+      <h4>Warden Protocol</h4>
+      <p>$WARD Ambassador</p>
+    </div>
+    <div class="alliance">
+      <div class="al">ZM</div>
+      <h4>Zama</h4>
+      <p>Confidential Chain</p>
+    </div>
+    <div class="alliance">
+      <div class="al">WL</div>
+      <h4>WOL.FUN</h4>
+      <p>Campaign Partner</p>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<!-- ══════ SECTION 3 : THE ALCHEMY ══════ -->
+<section id="alchemy" class="alchemy">
+<nav class="nav" style="position:relative">
+  <a href="#" class="nav-logo">Ziadul<b>.xyz</b></a>
+  <div class="nav-menu">
+    <a href="#captain">Home</a>
+    <a href="#bounties">Portfolio</a>
+    <a href="#bounties">Services</a>
+    <a href="#alchemy" class="on">Projects</a>
+  </div>
+  <button class="nav-search" aria-label="Search">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke-width="2"/><path stroke-width="2" d="M21 21l-4.35-4.35"/></svg>
+  </button>
+</nav>
+
+<div class="alchemy-hdr rv">
+  <div class="dl">🍇</div>
+  <div class="dr">🍎</div>
+  <div class="tag">// The Alchemy</div>
+  <h2>CREATIVE <span style="color:var(--gold)">PROCESS</span></h2>
+</div>
+
+<div class="roadmap rv rv-d1">
+  <button class="rm-btn on" onclick="step(this)">Ideation</button>
+  <button class="rm-btn" onclick="step(this)">Formation</button>
+  <button class="rm-btn" onclick="step(this)">Bounding</button>
+  <button class="rm-btn" onclick="step(this)">Launch</button>
+</div>
+
+<div class="df-carousel rv rv-d2">
+  <div class="df-card sm">
+    <div class="fi">🍇</div>
+    <div class="fn">STAGE 01</div>
+    <h4>Research</h4>
+    <p>Market analysis, community audit, competitor mapping</p>
+  </div>
+  <div class="df-card sm">
+    <div class="fi">🫐</div>
+    <div class="fn">STAGE 02</div>
+    <h4>Strategy</h4>
+    <p>Growth framework, KPIs, engagement roadmap</p>
+  </div>
+  <div class="df-card md">
+    <div class="fi">🍎</div>
+    <div class="fn">STAGE 03 — ACTIVE</div>
+    <h4>Content & Community</h4>
+    <p>Thread writing, graphic design, campaign assets, narrative building, community storytelling for Web3 projects. From protocol deep-dives to growth marketing insights.</p>
+  </div>
+  <div class="df-card sm">
+    <div class="fi">🍊</div>
+    <div class="fn">STAGE 04</div>
+    <h4>Distribution</h4>
+    <p>Multi-platform push, influencer seeding, community activation</p>
+  </div>
+  <div class="df-card sm">
+    <div class="fi">🍋</div>
+    <div class="fn">STAGE 05</div>
+    <h4>Optimize</h4>
+    <p>Analytics review, iterate, scale what works</p>
+  </div>
+</div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <span>© 2025 Ziadul Hasan — All Seas Reserved</span>
+  <div class="foot-links">
+    <a href="https://x.com/alveejack1" target="_blank">X / Twitter</a>
+    <a href="https://t.me/jiaduljoy" target="_blank">Telegram</a>
+    <a href="https://discord.gg/jiaduljoy" target="_blank">Discord</a>
+  </div>
+</footer>
+
+<script>
+function slide(id, d) {
+  document.getElementById(id).scrollBy({ left: d * 240, behavior: 'smooth' });
+}
+function step(btn) {
+  document.querySelectorAll('.rm-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+}
+const obs = new IntersectionObserver(e => {
+  e.forEach(x => { if (x.isIntersecting) x.target.classList.add('vis'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
