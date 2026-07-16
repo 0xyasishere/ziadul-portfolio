@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ziadul Hasan — @alveejack1</title>
+  <title>Ziadul Hasan | @alveejack1</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -159,6 +159,23 @@
     .rv.vis { opacity:1; transform:translateY(0); }
     .rv-d1 { transition-delay:0.1s; }
     .rv-d2 { transition-delay:0.2s; }
+
+    @keyframes cardWalk {
+      0% { transform:translateY(0); }
+      25% { transform:translateY(-3px) rotate(0.5deg); }
+      50% { transform:translateY(0); }
+      75% { transform:translateY(-2px) rotate(-0.5deg); }
+      100% { transform:translateY(0); }
+    }
+    .wanted { animation:cardWalk 2s ease-in-out infinite; }
+    .wanted:nth-child(2) { animation-delay:0.3s; }
+    .wanted:nth-child(3) { animation-delay:0.6s; }
+    .wanted:nth-child(4) { animation-delay:0.9s; }
+    .marine { animation:cardWalk 2.5s ease-in-out infinite; }
+    .marine:nth-child(2) { animation-delay:0.4s; }
+    .marine:nth-child(3) { animation-delay:0.8s; }
+    .marine:nth-child(4) { animation-delay:1.2s; }
+    .marine:nth-child(5) { animation-delay:1.6s; }
     @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; } }
 
     @media (max-width:960px) {
@@ -204,10 +221,10 @@
 
   <div class="hero-txt rv rv-d1">
     <div class="tag">// The Captain</div>
-    <h1><em>Ziadul</em> Hasan —<br>Sailing the<br>Web3 Seas</h1>
+    <h1><em>Ziadul</em> Hasan<br>Sailing the<br>Web3 Seas</h1>
     <p class="desc">
       <strong>Personal brand, growth & marketing insights.</strong>
-      Opinions my own — not financial advice.
+      Opinions my own, not financial advice.
       From protocol deep-dives to market analysis, I break down complex blockchain concepts into actionable intelligence.
     </p>
     <div class="hero-tags">
@@ -284,7 +301,7 @@
       <div class="w-img"><img src="https://pbs.twimg.com/profile_images/1654459351300468736/ywoKR9uZ.jpg" alt="Zama" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="w-body">
         <h4>Zama $ZAMA</h4>
-        <p>Confidential Blockchain — encrypted data, burned fees, operator rewards</p>
+        <p>Confidential Blockchain. Encrypted data, burned fees, operator rewards</p>
       </div>
       <div class="w-bounty"><span>ECOSYSTEM: PRIVACY</span></div>
     </div>
@@ -312,25 +329,25 @@
     <div class="marine">
       <div class="mi">⛓️</div>
       <h4>Onchain Governance</h4>
-      <p>$SYND holders shaping the network through Agora — proposals, voting, coordination</p>
+      <p>$SYND holders shaping the network through Agora. Proposals, voting, coordination</p>
       <div class="mt">Governance</div>
     </div>
     <div class="marine">
       <div class="mi">🚀</div>
       <h4>Smart Sequencer</h4>
-      <p>Developer-controlled transaction flow — community defines the rules</p>
+      <p>Developer-controlled transaction flow. Community defines the rules</p>
       <div class="mt">Infrastructure</div>
     </div>
     <div class="marine">
       <div class="mi">📐</div>
       <h4>Horizontal Scaling</h4>
-      <p>Modular appchains — each chain its own rules, incentives, execution</p>
+      <p>Modular appchains. Each chain its own rules, incentives, execution</p>
       <div class="mt">Layer 2</div>
     </div>
     <div class="marine">
       <div class="mi">💧</div>
       <h4>$SYND on Aerodrome</h4>
-      <p>DeFi launch — liquidity, governance, coordination redefined</p>
+      <p>DeFi launch. Liquidity, governance, coordination redefined</p>
       <div class="mt">DeFi</div>
     </div>
     <div class="marine">
@@ -386,7 +403,7 @@
   </div>
   <div class="df-card md">
     <div class="fi">🍎</div>
-    <div class="fn">STAGE 03 — ACTIVE</div>
+    <div class="fn">STAGE 03 ACTIVE</div>
     <h4>Create Content</h4>
     <p>Thread writing, narrative building, growth marketing insights. Breaking down complex blockchain concepts into actionable intelligence for builders, traders, and enthusiasts. No fluff, no financial advice.</p>
   </div>
@@ -406,7 +423,7 @@
 </section>
 
 <footer class="foot">
-  <span>© 2025 Ziadul Hasan — All Seas Reserved</span>
+  <span>© 2025 Ziadul Hasan. All Seas Reserved</span>
   <div class="foot-links">
     <a href="https://x.com/alveejack1" target="_blank">X / Twitter</a>
     <a href="https://t.me/jiaduljoy" target="_blank">Telegram</a>
